@@ -1,0 +1,34 @@
+<%= javascript_pack_tag "for_delete" %>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Articles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Slug</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.content %></td>
+        <td><%= article.slug %></td>
+        <td><%= link_to 'Show', api_v1_article_path(article) %></td>
+        <td><%= link_to 'Edit', edit_api_v1_article_path(article) %></td>
+        <!-- <td><%= link_to 'Destroy', api_v1_article_path(article), method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+        <td><%= link_to 'Destroy',"", data: { id: "#{article.id}"}, class: "deleting_element" , id: "deleting_element_#{article.id}", remote: true %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Article', new_api_v1_article_path %>
