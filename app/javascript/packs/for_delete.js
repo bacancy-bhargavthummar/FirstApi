@@ -13,7 +13,6 @@ $(document).ready(function(){
         },
         success: function(data){
           if (data.status == 'done') {
-            alert(data.message)
             $('#deleting_element_' + article_id).parent().parent().remove();
           } else {
             alert(data.message)

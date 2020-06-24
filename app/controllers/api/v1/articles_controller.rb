@@ -4,6 +4,10 @@ class Api::V1::ArticlesController < ApplicationController
   # GET /articles
   def index
     @articles = Article.all
+    respond_to do |format|
+      format.html 
+      format.json { render json: @articles }  # if root path is not given to index 
+    end
   end
 
   # GET /articles/1
@@ -29,7 +33,7 @@ class Api::V1::ArticlesController < ApplicationController
     @article = Article.new(article_params)
     respond_to do |format|
       if @article.save
-        format.html { redirect_to api_v1_articles_path(@article) }
+        format.html { redirect_to api_v1_article_path(@article) }
         format.json { render json: @article, status: :created, location: api_v1_article_url(@article) }
       else
         format.html { render new_api_v1_article_path(@article), action: :new }
