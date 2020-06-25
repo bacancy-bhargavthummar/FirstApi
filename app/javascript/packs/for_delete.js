@@ -8,9 +8,9 @@ $(document).ready(function(){
         headers: {
           'X-CSRF-Token': document.querySelector("meta[name=csrf-token]").content
         },
-        data: {
-            article_id: article_id
-        },
+        // data: {
+        //     article_id: article_id
+        // },
         success: function(data){
           if (data.status == 'done') {
             $('#deleting_element_' + article_id).parent().parent().remove();
