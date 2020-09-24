@@ -1,12 +1,13 @@
 class Api::V1::ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token  
 
   # GET /articles
   def index
     @articles = Article.all
     respond_to do |format|
       format.html 
-      format.json { render json: @articles }  # if root path is not given to index 
+      format.json { render json: { data1: @articles, data2: "This is Bhargav"} }  # if root path is not given to index 
     end
   end
 
